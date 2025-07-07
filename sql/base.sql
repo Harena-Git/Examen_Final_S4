@@ -1,5 +1,6 @@
+CREATE DATABASE tp_flight CHARACTER SET utf8mb4;
+USE tp_flight;
 
-/**/
 CREATE TABLE etablissement (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nom VARCHAR(100) NOT NULL,
@@ -43,4 +44,14 @@ CREATE TABLE remboursement (
     date_prevue DATE NOT NULL,
     paye BOOLEAN DEFAULT FALSE,
     FOREIGN KEY (id_pret) REFERENCES pret(id)
+);
+
+CREATE TABLE historique_fond (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_etablissement INT NOT NULL,
+    type_operation ENUM('ajout', 'retrait', 'correction') NOT NULL DEFAULT 'ajout',
+    montant DECIMAL(12,2) NOT NULL CHECK (montant > 0),
+    commentaire TEXT,
+    date_operation DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (id_etablissement) REFERENCES etablissement(id)
 );
