@@ -14,7 +14,7 @@ CREATE TABLE type_pret (
     taux DECIMAL(5,2) NOT NULL CHECK (taux > 0),
     duree_max INT NOT NULL CHECK (duree_max > 0),
     montant_min DECIMAL(12,2) NOT NULL CHECK (montant_min >= 0),
-    montant_max DECIMAL(12,2) CHECK (montant_max >= 0),
+    montant_max DECIMAL(12,2) CHECK (montant_max >= 0)
 );
 
 CREATE TABLE client (
