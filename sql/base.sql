@@ -74,6 +74,18 @@ CREATE TABLE historique_statut (
     FOREIGN KEY (id_statut) REFERENCES statut(id)
 );
 
+CREATE TABLE admin (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nom VARCHAR(100) NOT NULL,
+    prenom VARCHAR(100) NOT NULL,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    mot_de_passe VARCHAR(255) NOT NULL,
+    role ENUM('super_admin', 'admin', 'gestionnaire') DEFAULT 'gestionnaire',
+    date_creation DATETIME DEFAULT CURRENT_TIMESTAMP,
+    dernier_acces DATETIME,
+    actif BOOLEAN DEFAULT TRUE
+);
+
 -- Insertion des statuts par défaut
 INSERT INTO statut (libelle, description) VALUES
 ('en_attente', 'Le prêt est en attente de validation'),
