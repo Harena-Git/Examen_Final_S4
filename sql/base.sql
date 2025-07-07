@@ -94,7 +94,7 @@ CREATE TABLE user (
     date_inscription DATETIME DEFAULT CURRENT_TIMESTAMP,
     last_login DATETIME NULL,
     FOREIGN KEY (id_client) REFERENCES client(id) ON DELETE CASCADE
-);
+);/**/
 
 INSERT INTO statut (libelle, description) VALUES
 ('en_attente', 'Le prêt est en attente de validation'),
