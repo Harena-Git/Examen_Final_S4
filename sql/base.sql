@@ -55,3 +55,14 @@ CREATE TABLE historique_fond (
     date_operation DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (id_etablissement) REFERENCES etablissement(id)
 );
+CREATE TABLE admin (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nom VARCHAR(100) NOT NULL,
+    prenom VARCHAR(100) NOT NULL,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    mot_de_passe VARCHAR(255) NOT NULL,
+    role ENUM('super_admin', 'admin', 'gestionnaire') DEFAULT 'gestionnaire',
+    date_creation DATETIME DEFAULT CURRENT_TIMESTAMP,
+    dernier_acces DATETIME,
+    actif BOOLEAN DEFAULT TRUE
+);
