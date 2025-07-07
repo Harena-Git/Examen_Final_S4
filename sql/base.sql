@@ -59,7 +59,6 @@ CREATE TABLE statut (
     libelle VARCHAR(50) NOT NULL UNIQUE,
     description TEXT
 );
--- Ajout de la colonne id_statut dans la table pret
 ALTER TABLE pret
     ADD COLUMN id_statut INT DEFAULT NULL,
     ADD FOREIGN KEY (id_statut) REFERENCES statut(id);
@@ -86,7 +85,17 @@ CREATE TABLE admin (
     actif BOOLEAN DEFAULT TRUE
 );
 
--- Insertion des statuts par défaut
+CREATE TABLE user (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    role ENUM('client', 'gestionnaire', 'admin') NOT NULL DEFAULT 'client',
+    id_client INT NULL,
+    date_inscription DATETIME DEFAULT CURRENT_TIMESTAMP,
+    last_login DATETIME NULL,
+    FOREIGN KEY (id_client) REFERENCES client(id) ON DELETE CASCADE
+);
+
 INSERT INTO statut (libelle, description) VALUES
 ('en_attente', 'Le prêt est en attente de validation'),
 ('approuve', 'Le prêt a été approuvé'),
