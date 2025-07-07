@@ -1,3 +1,5 @@
+
+/**/
 CREATE TABLE etablissement (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nom VARCHAR(100) NOT NULL,
