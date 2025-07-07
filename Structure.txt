@@ -1,0 +1,16 @@
+web/
+├── sql/
+├── ws/
+│   ├── vendor/
+│   ├── controllers/
+│   ├── models/
+│   ├── views/                 # Nouveau dossier pour les vues
+│   │   ├── etudiants/
+│   │   │   ├── list.php       # Vue pour lister les étudiants
+│   │   │   └── show.php       # Vue pour afficher un étudiant
+│   │   └── layout.php         # Template principal
+│   ├── db.php
+│   ├── routes.php
+│   └── index.php
+├── index.html
+└── Structure.txt
